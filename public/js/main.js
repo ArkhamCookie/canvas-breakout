@@ -22,4 +22,5 @@ function startGame() {
 
 startButton.addEventListener('click', function () {
 	startGame()
+	startButton.style.display = 'none'
 })
