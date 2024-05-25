@@ -1,4 +1,5 @@
 import { drawBall } from './ball.js'
+import { drawPaddle } from './paddle.js'
 
 const startButton = document.getElementById('startButton')
 const canvas = document.getElementById('gameCanvas')
@@ -15,6 +16,7 @@ function draw() {
 	context.clearRect(0, 0, canvas.width, canvas.height)
 
 	drawBall(ballX, ballY)
+	drawPaddle(10, 75)
 
 	if (ballX + directionX > canvas.width - ballRadius || ballX + directionX < ballRadius) {
 		directionX = -directionX
