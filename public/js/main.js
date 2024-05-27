@@ -1,7 +1,7 @@
 import { drawBall } from './ball.js'
 import { drawPaddle } from './paddle.js'
 
-// Setup Dom
+// Setup DOM
 const startButton = document.getElementById('startButton')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
