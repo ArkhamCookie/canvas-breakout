@@ -3,10 +3,10 @@ const context = canvas.getContext('2d')
 
 /**
  * Draws paddle on canvas
- * @param {number} paddleHeight
  * @param {number} paddleWidth
+ * @param {number} paddleHeight
  */
-function drawPaddle(paddleHeight, paddleWidth) {
+function drawPaddle(paddleWidth, paddleHeight) {
 	let paddleX = (canvas.width - paddleWidth) / 2
 
 	context.beginPath()
