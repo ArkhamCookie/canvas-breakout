@@ -1,14 +1,17 @@
 import { drawBall } from './ball.js'
 import { drawPaddle } from './paddle.js'
 
+// Setup Dom
 const startButton = document.getElementById('startButton')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
 
+// Difficulty Settings
 let ballRadius = 10
 let paddleWidth = 75
 let paddleHeight = 10
 
+// Ball Movement
 let ballX = canvas.width / 2
 let ballY = canvas.height - 30
 let directionX = 2
