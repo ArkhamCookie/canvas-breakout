@@ -1,6 +1,11 @@
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
 
+/**
+ * Draws paddle on canvas
+ * @param {number} paddleHeight
+ * @param {number} paddleWidth
+ */
 function drawPaddle(paddleHeight, paddleWidth) {
 	let paddleX = (canvas.width - paddleWidth) / 2
 
