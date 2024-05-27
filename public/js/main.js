@@ -31,12 +31,16 @@ function draw() {
 	drawBall(ballX, ballY, ballRadius)
 	drawPaddle(paddleWidth, paddleHeight, paddleX)
 
-	// Bouce Ball of Canvas Sides
+	// Handle Ball Bouncing
 	if (ballX + directionX > canvas.width - ballRadius || ballX + directionX < ballRadius) {
 		directionX = -directionX
 	}
-	if (ballY + directionY > canvas.height - ballRadius || ballY + directionY < ballRadius) {
+	if (ballY + directionY < ballRadius) {
 		directionY = -directionY
+	} else if (ballY + directionY > canvas.height - ballRadius) {
+		alert('Game Over!')
+		document.location.reload()
+		clearInterval(interval) // Needed for Chrome to end game
 	}
 
 	// Handle Paddle Movement
@@ -90,7 +94,7 @@ function keyUpHandler(event) {
 function startGame() {
 	document.addEventListener("keydown", keyDownHandler)
 	document.addEventListener("keyup", keyUpHandler)
-	setInterval(draw, 10)
+	const interval = setInterval(draw, 10)
 }
 
 startButton.addEventListener('click', function () {
