@@ -6,9 +6,9 @@ const context = canvas.getContext('2d')
  * @param {number} x - x coordinate of ball
  * @param {number} y - y coordinate of ball
  */
-function drawBall(x, y) {
+function drawBall(x, y, ballRadius) {
 	context.beginPath()
-	context.arc(x, y, 10, 0, Math.PI * 2)
+	context.arc(x, y, ballRadius, 0, Math.PI * 2)
 	context.fillStyle = '#0095DD'
 	context.fill()
 	context.closePath()
