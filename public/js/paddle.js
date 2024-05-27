@@ -6,9 +6,7 @@ const context = canvas.getContext('2d')
  * @param {number} paddleWidth
  * @param {number} paddleHeight
  */
-function drawPaddle(paddleWidth, paddleHeight) {
-	let paddleX = (canvas.width - paddleWidth) / 2
-
+function drawPaddle(paddleWidth, paddleHeight, paddleX) {
 	context.beginPath()
 	context.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight)
 	context.fillStyle = '#0095DD'
