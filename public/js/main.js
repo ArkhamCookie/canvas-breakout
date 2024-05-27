@@ -5,7 +5,7 @@ const startButton = document.getElementById('startButton')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
 
-const ballRadius = 5
+const ballRadius = 10
 
 let ballX = canvas.width / 2
 let ballY = canvas.height - 30
