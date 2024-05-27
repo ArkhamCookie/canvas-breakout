@@ -6,8 +6,8 @@ const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
 
 let ballRadius = 10
-let paddleWidth = 10
-let paddleHeight = 75
+let paddleWidth = 75
+let paddleHeight = 10
 
 let ballX = canvas.width / 2
 let ballY = canvas.height - 30
