@@ -5,6 +5,7 @@ import { drawPaddle } from './paddle.js'
 const startButton = document.getElementById('startButton')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
+let intervalID
 
 // Difficulty Settings
 let ballRadius = 10
@@ -32,15 +33,20 @@ function draw() {
 	drawPaddle(paddleWidth, paddleHeight, paddleX)
 
 	// Handle Ball Bouncing
-	if (ballX + directionX > canvas.width - ballRadius || ballX + directionX < ballRadius) {
+	if (ballX + directionX > canvas.width - ballRadius || ballX + directionX < ballRadius) { // Hitting sides
 		directionX = -directionX
 	}
-	if (ballY + directionY < ballRadius) {
+	if (ballY + directionY < ballRadius) { // Hitting top
 		directionY = -directionY
-	} else if (ballY + directionY > canvas.height - ballRadius) {
-		alert('Game Over!')
-		document.location.reload()
-		clearInterval(interval) // Needed for Chrome to end game
+	}
+	if (ballY + directionY > canvas.height - ballRadius) { // Hitting Bottom (or paddle)
+		if (ballX > paddleX && ballX < paddleX + paddleWidth) {
+			directionY = -directionY
+		} else {
+			alert('Game Over!')
+			document.location.reload()
+			clearInterval(intervalID)
+		}
 	}
 
 	// Handle Paddle Movement
@@ -94,7 +100,7 @@ function keyUpHandler(event) {
 function startGame() {
 	document.addEventListener("keydown", keyDownHandler)
 	document.addEventListener("keyup", keyUpHandler)
-	const interval = setInterval(draw, 10)
+	intervalID = setInterval(draw, 10)
 }
 
 startButton.addEventListener('click', function () {
