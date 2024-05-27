@@ -24,19 +24,22 @@ let leftPressed = false
 
 /** Draw Screen */
 function draw() {
+	// Clear Screen (to allow redrawing of components)
 	context.clearRect(0, 0, canvas.width, canvas.height)
 
+	// Draw Game Components
 	drawBall(ballX, ballY, ballRadius)
 	drawPaddle(paddleWidth, paddleHeight, paddleX)
 
+	// Bouce Ball of Canvas Sides
 	if (ballX + directionX > canvas.width - ballRadius || ballX + directionX < ballRadius) {
 		directionX = -directionX
 	}
-
 	if (ballY + directionY > canvas.height - ballRadius || ballY + directionY < ballRadius) {
 		directionY = -directionY
 	}
 
+	// Handle Paddle Movement
 	if (rightPressed) {
 		paddleX = Math.min(paddleX + 7, canvas.width - paddleWidth)
 	}
@@ -44,6 +47,7 @@ function draw() {
 		paddleX = Math.max(paddleX - 7, 0)
 	}
 
+	// Handle Ball Movement
 	ballX += directionX
 	ballY += directionY
 }
