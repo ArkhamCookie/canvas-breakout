@@ -69,6 +69,10 @@ function keyDownHandler(event) {
 	}
 }
 
+/**
+ * Handle Stopping Pressing Keys for Controls
+ * @param {object} event
+ */
 function keyUpHandler(event) {
 	switch (event.key) {
 		case "ArrowRight":
