@@ -17,6 +17,7 @@ let ballY = canvas.height - 30
 let directionX = 2
 let directionY = -2
 
+/** Draw Screen */
 function draw() {
 	context.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -35,6 +36,7 @@ function draw() {
 	ballY += directionY
 }
 
+/** Start Game */
 function startGame() {
 	setInterval(draw, 10)
 }
