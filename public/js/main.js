@@ -17,12 +17,17 @@ let ballY = canvas.height - 30
 let directionX = 2
 let directionY = -2
 
+// Controls
+let paddleX = (canvas.width - paddleWidth) / 2
+let rightPressed = false
+let leftPressed = false
+
 /** Draw Screen */
 function draw() {
 	context.clearRect(0, 0, canvas.width, canvas.height)
 
 	drawBall(ballX, ballY, ballRadius)
-	drawPaddle(paddleWidth, paddleHeight)
+	drawPaddle(paddleWidth, paddleHeight, paddleX)
 
 	if (ballX + directionX > canvas.width - ballRadius || ballX + directionX < ballRadius) {
 		directionX = -directionX
@@ -32,12 +37,51 @@ function draw() {
 		directionY = -directionY
 	}
 
+	if (rightPressed) {
+		paddleX = Math.min(paddleX + 7, canvas.width - paddleWidth)
+	}
+	if (leftPressed) {
+		paddleX = Math.max(paddleX - 7, 0)
+	}
+
 	ballX += directionX
 	ballY += directionY
 }
 
+/**
+ * Handle Pressing Keys for Controls
+ * @param {object} event
+ */
+function keyDownHandler(event) {
+	switch (event.key) {
+		case "ArrowRight":
+		case "d":
+			rightPressed = true
+			break
+		case "ArrowLeft":
+		case "a":
+			leftPressed = true
+			break
+	}
+}
+
+function keyUpHandler(event) {
+	switch (event.key) {
+		case "ArrowRight":
+		case "d":
+			rightPressed = false
+			break
+		case "ArrowLeft":
+		case "a":
+			leftPressed = false
+			break
+	}
+}
+
 /** Start Game */
 function startGame() {
+	document.addEventListener("keydown", keyDownHandler)
+	document.addEventListener("keyup", keyUpHandler)
 	setInterval(draw, 10)
 }
 
