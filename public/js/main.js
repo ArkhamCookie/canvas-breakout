@@ -45,7 +45,7 @@ function draw() {
 		} else {
 			alert('Game Over!')
 			document.location.reload()
-			clearInterval(intervalID)
+			clearInterval(intervalID) // Needed for Chrome to end game
 		}
 	}
 
