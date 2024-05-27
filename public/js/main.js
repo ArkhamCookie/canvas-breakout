@@ -5,7 +5,9 @@ const startButton = document.getElementById('startButton')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
 
-const ballRadius = 10
+let ballRadius = 10
+let paddleWidth = 10
+let paddleHeight = 75
 
 let ballX = canvas.width / 2
 let ballY = canvas.height - 30
@@ -16,7 +18,7 @@ function draw() {
 	context.clearRect(0, 0, canvas.width, canvas.height)
 
 	drawBall(ballX, ballY, ballRadius)
-	drawPaddle(10, 75)
+	drawPaddle(paddleWidth, paddleHeight)
 
 	if (ballX + directionX > canvas.width - ballRadius || ballX + directionX < ballRadius) {
 		directionX = -directionX
