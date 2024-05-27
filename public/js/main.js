@@ -1,4 +1,5 @@
 import { drawBall } from './ball.js'
+import { drawBricks } from './bricks.js'
 import { drawPaddle } from './paddle.js'
 
 // Setup DOM
@@ -11,6 +12,10 @@ let intervalID
 let ballRadius = 10
 let paddleWidth = 75
 let paddleHeight = 10
+let brickRowCount = 3
+let brickColumnCount = 5
+let brickWidth = 75
+let brickHeight = 20
 
 // Ball Movement
 let ballX = canvas.width / 2
@@ -31,6 +36,7 @@ function draw() {
 	// Draw Game Components
 	drawBall(ballX, ballY, ballRadius)
 	drawPaddle(paddleWidth, paddleHeight, paddleX)
+	drawBricks(brickRowCount, brickColumnCount, brickWidth, brickHeight)
 
 	// Handle Ball Bouncing
 	if (ballX + directionX > canvas.width - ballRadius || ballX + directionX < ballRadius) { // Hitting sides
