@@ -36,7 +36,9 @@ let paddleX = (canvas.width - paddleWidth) / 2
 let rightPressed = false
 let leftPressed = false
 
+// Game Vars
 let score = 0
+let lives = 3
 
 // Setup Bricks
 const bricks = []
@@ -117,9 +119,18 @@ function draw() {
 		if (ballX > paddleX && ballX < paddleX + paddleWidth) {
 			directionY = -directionY
 		} else {
-			alert('Game Over!')
-			document.location.reload()
-			clearInterval(intervalID) // Needed for Chrome to end game
+			lives--
+			if (lives >= 0) {
+				alert('Game Over!')
+				document.location.reload()
+				clearInterval(intervalID) // Needed for Chrome to end game
+			} else {
+				ballX = canvas.width / 2
+				ballY = canvas.height - 30
+				directionX = 2
+				directionY = -2
+				paddleX = (canvas.width - paddleWidth) / 2
+			}
 		}
 	}
 
@@ -170,8 +181,16 @@ function keyUpHandler(event) {
 	}
 }
 
+function mouseMoveHandler(event) {
+	const relativeX = event.clientX - canvas.offsetLeft
+	if (relativeX > 0 && relativeX < canvas.width) {
+		paddleX = relativeX - paddleWidth / 2
+	}
+}
+
 /** Start Game */
 function startGame() {
+	document.addEventListener('mousemove', mouseMoveHandler)
 	document.addEventListener('keydown', keyDownHandler)
 	document.addEventListener('keyup', keyUpHandler)
 	scoreDisplay.textContent = 'Score: 0'
