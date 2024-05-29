@@ -120,7 +120,7 @@ function draw() {
 			directionY = -directionY
 		} else {
 			lives--
-			if (lives >= 0) {
+			if (lives <= 0) {
 				alert('Game Over!')
 				document.location.reload()
 				clearInterval(intervalID) // Needed for Chrome to end game
