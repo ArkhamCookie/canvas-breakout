@@ -172,8 +172,8 @@ function keyUpHandler(event) {
 
 /** Start Game */
 function startGame() {
-	document.addEventListener("keydown", keyDownHandler)
-	document.addEventListener("keyup", keyUpHandler)
+	document.addEventListener('keydown', keyDownHandler)
+	document.addEventListener('keyup', keyUpHandler)
 	scoreDisplay.textContent = 'Score: 0'
 	intervalID = setInterval(draw, 10)
 }
