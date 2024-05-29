@@ -3,6 +3,7 @@ import { drawPaddle } from './paddle.js'
 
 // Setup DOM
 const startButton = document.getElementById('startButton')
+const scoreDisplay = document.getElementById('score')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
 let intervalID
@@ -34,6 +35,8 @@ let directionY = -2
 let paddleX = (canvas.width - paddleWidth) / 2
 let rightPressed = false
 let leftPressed = false
+
+let score = 0
 
 // Setup Bricks
 const bricks = []
@@ -77,6 +80,8 @@ function collisionDetection() {
 				if (ballX > brick.x && ballX < brick.x + brickWidth && ballY > brick.y && ballY < brick.y + brickHeight) {
 					directionY = -directionY
 					brick.status = 0
+					score++
+					scoreDisplay.textContent = 'Score: ' + score
 				}
 			}
 		}
@@ -163,6 +168,7 @@ function keyUpHandler(event) {
 function startGame() {
 	document.addEventListener("keydown", keyDownHandler)
 	document.addEventListener("keyup", keyUpHandler)
+	scoreDisplay.textContent = 'Score: 0'
 	intervalID = setInterval(draw, 10)
 }
 
