@@ -11,6 +11,9 @@ let intervalID
 const brickPadding = 10
 const brickOffsetTop = 30
 const brickOffsetLeft = 30
+let ballColor = '#0095DD'
+let paddleColor = '#0095DD'
+let brickColor = '#0095DD'
 
 // Difficulty Settings
 let ballRadius = 10
@@ -56,7 +59,7 @@ function drawBricks() {
 
 				context.beginPath()
 				context.rect(brickX, brickY, brickWidth, brickHeight)
-				context.fillStyle = '#0095DD'
+				context.fillStyle = brickColor
 				context.fill()
 				context.closePath()
 			}
@@ -87,8 +90,8 @@ function draw() {
 	context.clearRect(0, 0, canvas.width, canvas.height)
 
 	// Draw Game Components
-	drawBall(ballX, ballY, ballRadius)
-	drawPaddle(paddleWidth, paddleHeight, paddleX)
+	drawBall(ballX, ballY, ballRadius, ballColor)
+	drawPaddle(paddleWidth, paddleHeight, paddleX, paddleColor)
 	drawBricks()
 	collisionDetection()
 
