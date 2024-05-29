@@ -1,5 +1,4 @@
 import { drawBall } from './ball.js'
-import { drawBricks } from './bricks.js'
 import { drawPaddle } from './paddle.js'
 
 // Setup DOM
@@ -7,6 +6,11 @@ const startButton = document.getElementById('startButton')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
 let intervalID
+
+// Style Settings
+const brickPadding = 10
+const brickOffsetTop = 30
+const brickOffsetLeft = 30
 
 // Difficulty Settings
 let ballRadius = 10
@@ -28,6 +32,54 @@ let paddleX = (canvas.width - paddleWidth) / 2
 let rightPressed = false
 let leftPressed = false
 
+// Setup Bricks
+const bricks = []
+for (let c = 0; c < brickColumnCount; c++) {
+	bricks[c] = []
+	for (let r = 0; r < brickRowCount; r++) {
+		bricks[c][r] = { x: 0, y: 0, status: 1 }
+	}
+}
+
+
+function drawBricks() {
+	for (let c = 0; c < brickColumnCount; c++) {
+		for (let r = 0; r < brickRowCount; r++) {
+			const brick = bricks[c][r]
+
+			if (brick.status === 1) {
+				const brickX = c * (brickWidth + brickPadding) + brickOffsetLeft
+				const brickY = r * (brickHeight + brickPadding) + brickOffsetTop
+
+				brick.x = brickX
+				brick.y = brickY
+
+				context.beginPath()
+				context.rect(brickX, brickY, brickWidth, brickHeight)
+				context.fillStyle = '#0095DD'
+				context.fill()
+				context.closePath()
+			}
+		}
+	}
+}
+
+function collisionDetection() {
+	for (let c = 0; c < brickColumnCount; c++) {
+		for (let r = 0; r < brickRowCount; r++) {
+			const brick = bricks[c][r]
+
+			if (brick.status === 1) {
+				if (ballX > brick.x && ballX < brick.x + brickWidth && ballY > brick.y && ballY < brick.y + brickHeight) {
+					directionY = -directionY
+					brick.status = 0
+				}
+			}
+		}
+	}
+
+}
+
 /** Draw Screen */
 function draw() {
 	// Clear Screen (to allow redrawing of components)
@@ -36,7 +88,8 @@ function draw() {
 	// Draw Game Components
 	drawBall(ballX, ballY, ballRadius)
 	drawPaddle(paddleWidth, paddleHeight, paddleX)
-	drawBricks(brickRowCount, brickColumnCount, brickWidth, brickHeight)
+	drawBricks()
+	collisionDetection()
 
 	// Handle Ball Bouncing
 	if (ballX + directionX > canvas.width - ballRadius || ballX + directionX < ballRadius) { // Hitting sides
