@@ -82,6 +82,12 @@ function collisionDetection() {
 					brick.status = 0
 					score++
 					scoreDisplay.textContent = 'Score: ' + score
+
+					if (score === brickRowCount * brickColumnCount) {
+						alert("You Win!")
+						document.location.reload()
+						clearInterval(intervalID) // Needed for Chrome to end game
+					}
 				}
 			}
 		}
