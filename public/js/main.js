@@ -41,7 +41,7 @@ for (let c = 0; c < brickColumnCount; c++) {
 	}
 }
 
-
+/** Draw Bricks */
 function drawBricks() {
 	for (let c = 0; c < brickColumnCount; c++) {
 		for (let r = 0; r < brickRowCount; r++) {
@@ -64,6 +64,7 @@ function drawBricks() {
 	}
 }
 
+/** Detect Brick Collision */
 function collisionDetection() {
 	for (let c = 0; c < brickColumnCount; c++) {
 		for (let r = 0; r < brickRowCount; r++) {
