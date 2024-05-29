@@ -4,6 +4,7 @@ import { drawPaddle } from './paddle.js'
 // Setup DOM
 const startButton = document.getElementById('startButton')
 const scoreDisplay = document.getElementById('score')
+const livesDisplay = document.getElementById('lives')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
 let intervalID
@@ -120,6 +121,7 @@ function draw() {
 			directionY = -directionY
 		} else {
 			lives--
+			livesDisplay.textContent = 'Lives: ' + lives
 			if (lives <= 0) {
 				alert('Game Over!')
 				document.location.reload()
@@ -194,6 +196,7 @@ function startGame() {
 	document.addEventListener('keydown', keyDownHandler)
 	document.addEventListener('keyup', keyUpHandler)
 	scoreDisplay.textContent = 'Score: 0'
+	livesDisplay.textContent = 'Lives: 3'
 	intervalID = setInterval(draw, 10)
 }
 
