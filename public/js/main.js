@@ -183,6 +183,10 @@ function keyUpHandler(event) {
 	}
 }
 
+/**
+ * Handle Mouse Movement Controls
+ * @param {object} event
+ */
 function mouseMoveHandler(event) {
 	const relativeX = event.clientX - canvas.offsetLeft
 	if (relativeX > 0 && relativeX < canvas.width) {
