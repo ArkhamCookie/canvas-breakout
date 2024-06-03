@@ -7,6 +7,7 @@ const scoreDisplay = document.getElementById('score')
 const livesDisplay = document.getElementById('lives')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
+const ballColorSelector = document.getElementById('ballColorInput')
 let intervalID
 
 // Style Settings
@@ -203,6 +204,12 @@ function startGame() {
 	livesDisplay.textContent = 'Lives: 3'
 	intervalID = setInterval(draw, 10)
 }
+
+// Setup Settings
+ballColorSelector.addEventListener('change', function (event) {
+	ballColor = event.target.value
+})
+
 
 startButton.addEventListener('click', function () {
 	startGame()
