@@ -8,7 +8,7 @@ const livesDisplay = document.getElementById('lives')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
 const ballColorSelector = document.getElementById('ballColorInput')
-const paddleColorSelector = document.getElementById('paddleColorSelector')
+const paddleColorSelector = document.getElementById('paddleColorInput')
 let intervalID
 
 // Style Settings
