@@ -212,6 +212,7 @@ ballColorSelector.addEventListener('change', function (event) {
 
 
 startButton.addEventListener('click', function () {
+	ballColor = document.getElementById('ballColorInput').value
 	startGame()
 	startButton.style.display = 'none'
 })
