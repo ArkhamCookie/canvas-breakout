@@ -8,6 +8,7 @@ const livesDisplay = document.getElementById('lives')
 const canvas = document.getElementById('gameCanvas')
 const context = canvas.getContext('2d')
 const ballColorSelector = document.getElementById('ballColorInput')
+const paddleColorSelector = document.getElementById('paddleColorSelector')
 let intervalID
 
 // Style Settings
@@ -209,10 +210,15 @@ function startGame() {
 ballColorSelector.addEventListener('change', function (event) {
 	ballColor = event.target.value
 })
+paddleColorSelector.addEventListener('change', function (event) {
+	paddleColor = event.target.value
+})
 
 
 startButton.addEventListener('click', function () {
 	ballColor = ballColorSelector.value
+	paddleColor = paddleColorSelector.value
+
 	startGame()
 	startButton.style.display = 'none'
 })
