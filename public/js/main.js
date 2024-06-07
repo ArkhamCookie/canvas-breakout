@@ -214,7 +214,7 @@ paddleColorSelector.addEventListener('change', function (event) {
 	paddleColor = event.target.value
 })
 
-
+// Setup Game Start (Button)
 startButton.addEventListener('click', function () {
 	ballColor = ballColorSelector.value
 	paddleColor = paddleColorSelector.value
